@@ -1,0 +1,38 @@
+{
+  "name": "EasyHelpers",
+  "keywords": "",
+  "description": "An easy to use and extensible library for the ESP32 and ESP8266. It provides event handling, common utilities, and general helpers.",
+  "authors": [
+    {
+      "name": "ZanzyTHEbar",
+      "url": "https://github.com/ZanzyTHEbar"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZanzyTHEbar/EasyHelpers.git"
+  },
+  "dependencies": [
+    {
+      "name": "ArduinoJson",
+      "version": "https://github.com/bblanchon/ArduinoJson.git"
+    }
+  ],
+  "headers": [
+    "EasyHelpers.hpp",
+    "EasyHelpers.h"
+  ],
+  "export": {
+    "include": [
+      "lib/*",
+      "src/*",
+      "examples/*",
+      "include/*"
+    ]
+  },
+  "version": "0.0.1",
+  "frameworks": "arduino",
+  "platforms": [
+    "espressif32"
+  ]
+}
