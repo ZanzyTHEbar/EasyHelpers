@@ -6,7 +6,9 @@
 #include "observer.hpp"
 
 namespace Helpers {
-class MessageBuffer : public ISubject<CommunicationEvents_e>, public Logger {
+
+template <typename EnumT>
+class MessageBuffer : public ISubject<EnumT>, public Logger {
     iter_queue<JsonDocument> buffer;
 
    public:
@@ -23,10 +25,6 @@ class MessageBuffer : public ISubject<CommunicationEvents_e>, public Logger {
         }
         return *this;
     }
-
-    virtual void begin() {}
-    virtual void sendMessage(const std::string& message) {}
-    virtual void receiveMessage() {}
 
     void addMessage(const JsonDocument& message) {
         buffer.push(message);
@@ -58,7 +56,5 @@ class MessageBuffer : public ISubject<CommunicationEvents_e>, public Logger {
     bool isEmpty() const {
         return buffer.empty();
     }
-
-    bool repeat = false;
 };
 }  // namespace Helpers
