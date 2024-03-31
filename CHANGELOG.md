@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.0.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.0.0...v1.0.1) (2024-03-31)
+
+
+### 🤖 Build System
+
+* Add new headers to library.json ([f830b16](https://github.com/ZanzyTHEbar/EasyHelpers/commit/f830b164d6a1a16ab31104df44a9a23b39cc47b3))
+
 ## 1.0.0 (2024-03-31)
 
 
