@@ -3,6 +3,18 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## 1.0.0 (2024-03-31)
+
+
+### 🍕 Features
+
+* initial release ([81ba7f4](https://github.com/ZanzyTHEbar/EasyHelpers/commit/81ba7f474630a4d2b33fd718b5f1c010b1a9bae0))
+
+
+### 🤖 Build System
+
+* Update file paths in .releaserc ([6f786e5](https://github.com/ZanzyTHEbar/EasyHelpers/commit/6f786e5d647bd2488b9da657135ac11fec89fb56))
+
 ## [5.3.1](https://github.com/ZanzyTHEbar/EasyNetworkManager/compare/v5.3.0...v5.3.1) (2024-03-31)
 
 
