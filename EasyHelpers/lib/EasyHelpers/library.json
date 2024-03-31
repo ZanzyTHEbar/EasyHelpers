@@ -19,13 +19,21 @@
     }
   ],
   "headers": [
+    "helpers/helpers.hpp",
+    "helpers/iter_queue.hpp",
+    "helpers/logger.hpp",
+    "helpers/make_unique.hpp",
+    "helpers/observer.hpp",
+    "helpers/strategy.hpp",
+    "helpers/visitor.hpp",
+    "events/event.hpp",
+    "events/event_interface.hpp",
     "EasyHelpers.hpp",
     "EasyHelpers.h"
   ],
   "export": {
     "include": [
       "lib/*",
-      "src/*",
       "examples/*",
       "include/*"
     ]
