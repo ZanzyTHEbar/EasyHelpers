@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.4.3](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.4.2...v1.4.3) (2024-04-01)
+
+
+### 🐛 Bug Fixes
+
+* Refactor MessageBuffer class to return copies of JsonDocuments instead of references ([29d519d](https://github.com/ZanzyTHEbar/EasyHelpers/commit/29d519d2c2c94a702fa29e0a4db6a16f9b86ccc1))
+
 ## [1.4.2](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.4.1...v1.4.2) (2024-04-01)
 
 
