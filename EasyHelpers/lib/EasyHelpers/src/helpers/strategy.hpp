@@ -35,7 +35,7 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
      * @brief Get the message object at the front of the queue
      * @note This function will remove the message from the bufferusing `pop()`
      */
-    JsonDocument& getMessage() {
+    JsonDocument getMessage() {
         if (buffer.empty())
             // return an empty JsonDocument
             return buffer.front();
@@ -48,7 +48,7 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
      * @brief Get the message object at the front of the queue
      * @note This function will not remove the message from the buffer
      */
-    JsonDocument& peekMessage() {
+    JsonDocument peekMessage() {
         return buffer.front();
     }
 
@@ -56,7 +56,7 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
      * @brief Get the latest message object
      * @note This function will not remove the message from the buffer
      */
-    JsonDocument& getLatestMessage() {
+    JsonDocument getLatestMessage() {
         if (buffer.empty())
             // return an empty JsonDocument
             return buffer.front();
