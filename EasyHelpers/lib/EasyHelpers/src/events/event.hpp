@@ -53,12 +53,12 @@ class CustomEventManager
     }
 
     virtual void addSubscriber(
-        const std::shared_ptr<MessageBuffer<EnumT> >&& strategy) {
+        const std::shared_ptr<IEvent<EnumT> >&& strategy) {
         strategyQueue.emplace(std::move(strategy));
     }
 
     virtual void removeSubscriber(
-        const std::shared_ptr<MessageBuffer<EnumT> >&& strategy) {
+        const std::shared_ptr<IEvent<EnumT> >&& strategy) {
         Strategy_t tempQueue;
         while (!strategyQueue.empty()) {
             if (strategyQueue.front().get()->id != strategy.get()->id) {
