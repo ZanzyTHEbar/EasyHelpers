@@ -3,6 +3,14 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.4.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.4.0...v1.4.1) (2024-04-01)
+
+
+### 🐛 Bug Fixes
+
+* Add optional header and update getMessageByKey method ([4461e5f](https://github.com/ZanzyTHEbar/EasyHelpers/commit/4461e5faf45688275ac9631e1355ddd95157c3ac))
+* Remove unused functions from MessageBuffer class ([5dc96f5](https://github.com/ZanzyTHEbar/EasyHelpers/commit/5dc96f5ba414b58259d129e4b75592aa171f38c3))
+
 ## [1.4.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.3.2...v1.4.0) (2024-04-01)
 
 
