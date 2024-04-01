@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.3.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.2.1...v1.3.0) (2024-04-01)
+
+
+### 🍕 Features
+
+* Update wokwi.toml and strategy.hpp files ([2dd1555](https://github.com/ZanzyTHEbar/EasyHelpers/commit/2dd15558510b01b91d623d899a1e9fa9eb2d42c9))
+
 ## [1.2.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.2.0...v1.2.1) (2024-04-01)
 
 
