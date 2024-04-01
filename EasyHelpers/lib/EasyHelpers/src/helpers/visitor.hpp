@@ -1,18 +1,26 @@
 #pragma once
 #include <string>
+#include "id_interface.hpp"
 
 namespace Helpers {
-template <typename T>
-class Element {
+
+class VisitorRoot {
    public:
-    virtual ~Element() = default;
-    virtual void accept(T& visitor) = 0;
+    virtual ~VisitorRoot() = default;
 };
 
-template <typename T>
-class Visitor {
+class IElement : public IId {
    public:
-    virtual ~Visitor() = default;
-    virtual void visit(T* element) = 0;
+    virtual ~IElement() = default;
+    virtual void accept(VisitorRoot* visitor) = 0;
+    virtual std::string getID() const override = 0;
 };
+
+class VisitorBase : public VisitorRoot, public IId {
+   public:
+    virtual ~VisitorBase() = default;
+    virtual void visit(IElement* element) = 0;
+    virtual std::string getID() const override = 0;
+};
+
 }  // namespace Helpers

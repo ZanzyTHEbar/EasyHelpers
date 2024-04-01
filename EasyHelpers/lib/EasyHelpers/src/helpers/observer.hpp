@@ -4,13 +4,14 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include "id_interface.hpp"
 
 namespace Helpers {
 template <typename EnumT>
-class IObserver {
+class IObserver : public IId {
    public:
     virtual void update(const EnumT& event) = 0;
-    virtual std::string getName() const = 0;
+    virtual std::string getID() const override = 0;
 };
 
 /**
@@ -35,12 +36,12 @@ class ISubject {
     }
 
     void attach(const std::string& key, ObserverPtr_t observer) {
-        observers.emplace(observer->getName(), observer);
-        observerKeys[observer->getName()].push_back(key);
+        observers.emplace(observer->getID(), observer);
+        observerKeys[observer->getID()].push_back(key);
     }
 
     void detach(const ObserverPtr_t& observer) {
-        const std::string& name = observer.getName();
+        const std::string& name = observer.getID();
         observerKeys.erase(name);
         observers.erase(name);
     }

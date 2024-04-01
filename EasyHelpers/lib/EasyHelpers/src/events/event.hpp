@@ -84,11 +84,7 @@ class CustomEventManager
 
     virtual void update(const EnumT& event) override = 0;
 
-    std::string getID() override {
-        return this->_id;
-    }
-
-    std::string getName() const override {
+    std::string getID() const override {
         return this->_id;
     }
 };

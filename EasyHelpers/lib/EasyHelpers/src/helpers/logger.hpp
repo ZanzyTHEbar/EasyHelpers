@@ -5,9 +5,10 @@
 #include <sstream>
 #include <string>
 #include "helpers.hpp"
+#include "id_interface.hpp"
 
 namespace Helpers {
-class Logger {
+class Logger : public IId {
    public:
     enum LogLevel_e : uint8_t {
         DEBUG,
@@ -38,13 +39,13 @@ class Logger {
         return message;
     }
 
-    virtual std::string getID() {
-        return std::string("");
-    };
-
    public:
     Logger() = default;
     virtual ~Logger() = default;
+
+    virtual std::string getID() const override {
+        return "Logger";
+    }
 
     // Templated log function to handle various data types and arguments
     template <typename... Args>
