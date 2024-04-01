@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.3.2](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.3.1...v1.3.2) (2024-04-01)
+
+
+### 🧑‍💻 Code Refactoring
+
+* Refactor CustomEventManager constructor to accept an id parameter ([5ef510d](https://github.com/ZanzyTHEbar/EasyHelpers/commit/5ef510dbe988a97a4868c3592bbe47dd399b2061))
+
 ## [1.3.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.3.0...v1.3.1) (2024-04-01)
 
 
