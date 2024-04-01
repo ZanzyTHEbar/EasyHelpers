@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.3.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.3.0...v1.3.1) (2024-04-01)
+
+
+### 🐛 Bug Fixes
+
+* Refactor event.hpp: Move _id  and queue members to protected section ([14b5e69](https://github.com/ZanzyTHEbar/EasyHelpers/commit/14b5e69b57e61ae7f39511737ff0f75679842f18))
+
 ## [1.3.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.2.1...v1.3.0) (2024-04-01)
 
 
