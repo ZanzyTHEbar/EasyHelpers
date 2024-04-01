@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.2.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.2.0...v1.2.1) (2024-04-01)
+
+
+### 🧑‍💻 Code Refactoring
+
+* Add visitor.cpp example and id_interface.hpp files ([7b68621](https://github.com/ZanzyTHEbar/EasyHelpers/commit/7b686212b9a72255eef785748391d8786124d111))
+
 ## [1.2.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.1.0...v1.2.0) (2024-03-31)
 
 
