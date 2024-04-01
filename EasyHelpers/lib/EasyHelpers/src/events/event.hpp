@@ -20,7 +20,7 @@ class CustomEventManager
     Strategy_t strategyQueue;
 
    public:
-    CustomEventManager() : _id("CustomEventManager") {}
+    CustomEventManager(const std::string& id) : _id(id) {}
     virtual ~CustomEventManager() {
         this->stop();
         while (!strategyQueue.empty()) {
