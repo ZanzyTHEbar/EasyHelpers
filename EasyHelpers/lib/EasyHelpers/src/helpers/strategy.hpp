@@ -2,12 +2,13 @@
 #include <ArduinoJson.h>
 #include <string>
 #include "iter_queue.hpp"
+#include "logger.hpp"
 #include "observer.hpp"
 
 namespace Helpers {
 
 template <typename EnumT>
-class MessageBuffer : public ISubject<EnumT> {
+class MessageBuffer : public ISubject<EnumT>, public Logger {
     iter_queue<JsonDocument> buffer;
 
    public:
@@ -29,6 +30,10 @@ class MessageBuffer : public ISubject<EnumT> {
         buffer.push(message);
     }
 
+    /**
+     * @brief Get the message object at the front of the queue
+     * @note This function will remove the message from the bufferusing `pop()`
+     */
     JsonDocument& getMessage() {
         if (buffer.empty())
             // return an empty JsonDocument
@@ -38,10 +43,18 @@ class MessageBuffer : public ISubject<EnumT> {
         return message;
     }
 
+    /**
+     * @brief Get the message object at the front of the queue
+     * @note This function will not remove the message from the buffer
+     */
     JsonDocument& peekMessage() {
         return buffer.front();
     }
 
+    /**
+     * @brief Get the latest message object
+     * @note This function will not remove the message from the buffer
+     */
     JsonDocument& getLatestMessage() {
         if (buffer.empty())
             // return an empty JsonDocument
@@ -53,22 +66,54 @@ class MessageBuffer : public ISubject<EnumT> {
         return *this;
     }
 
+    bool isEmpty() const {
+        return buffer.empty();
+    }
+
+    size_t size() const {
+        return buffer.size();
+    }
+
+    void clear() {
+        while (!buffer.empty()) {
+            buffer.pop();
+        }
+    }
+
     template <typename T>
-    T serialize(const JsonDocument& doc) {
+    T serialize(bool iterate = false, bool clearBuffer = false) {
         T result;
-        serializeJson(doc, result);
+
+        if (buffer.empty()) {
+            this->log(LogLevel_t::ERROR, "Buffer is empty");
+            return result;
+        }
+
+        if (iterate) {
+            for (auto& message : buffer) {
+                serializeJson(result, message);
+            }
+        } else {
+            serializeJson(result, buffer.front());
+        }
         return result;
     }
 
     template <typename T>
-    JsonDocument deserialize(const T& data) {
+    bool deserialize(const T& data) {
         JsonDocument doc;
-        deserializeJson(doc, data);
-        return doc;
+        DeserializationError err = deserializeJson(doc, data);
+        if (err) {
+            this->log(LogLevel_t::ERROR, "deserializeJson() failed: ", err);
+            return false;
+        }
+
+        buffer.push(doc);
+        return true;
     }
 
-    bool isEmpty() const {
-        return buffer.empty();
+    virtual std::string getID() const override {
+        return "MessageBuffer";
     }
 };
 }  // namespace Helpers
