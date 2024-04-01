@@ -1,5 +1,6 @@
 #pragma once
 #include <ArduinoJson.h>
+#include <optional>
 #include <string>
 #include "iter_queue.hpp"
 #include "logger.hpp"
@@ -70,19 +71,19 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
      * @note If the key is not found, the first message in the buffer will be
      * returned
      */
-    JsonDocument& getMessageByKey(const std::string& key) {
+    std::optional<JsonDocument> getMessageByKey(const std::string& key) {
         if (buffer.empty())
-            // return an empty JsonDocument
-            return buffer.front();
+            return std::nullopt;
 
         for (auto& message : buffer) {
-            if (!message.containsKey(key)) {
-                this->log(LogLevel_t::ERROR,
-                          "Document with Key not found: ", key);
-                return message;
+            if (message.containsKey(key)) {
+                return message;  // Found the key, return a reference
+                                 // to the document
             }
-            return message;
         }
+
+        this->log(LogLevel_t::ERROR, "Document with Key not found: ", key);
+        return std::nullopt;  // Key not found in any document
     }
 
     JsonDocument& operator[](size_t index) {
