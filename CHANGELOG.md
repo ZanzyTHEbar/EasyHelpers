@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.4.2](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.4.1...v1.4.2) (2024-04-01)
+
+
+### 🐛 Bug Fixes
+
+* Update event.hpp and wokwi.toml ([1dfbad6](https://github.com/ZanzyTHEbar/EasyHelpers/commit/1dfbad61d8b5129fccf1276fd218de86c8dcd0d1))
+
 ## [1.4.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.4.0...v1.4.1) (2024-04-01)
 
 

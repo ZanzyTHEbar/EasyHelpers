@@ -38,7 +38,7 @@
       "include/*"
     ]
   },
-  "version": "1.4.1",
+  "version": "1.4.2",
   "frameworks": "arduino",
   "platforms": [
     "espressif32"
