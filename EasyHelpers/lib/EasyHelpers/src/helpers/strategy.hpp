@@ -86,14 +86,6 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
         return std::nullopt;  // Key not found in any document
     }
 
-    JsonDocument& operator[](size_t index) {
-        return buffer[index];
-    }
-
-    JsonDocument& at(size_t index) {
-        return buffer.at(index);
-    }
-
     MessageBuffer& getInstance() {
         return *this;
     }
