@@ -62,8 +62,43 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
         return buffer.back();
     }
 
+    /**
+     * @brief Get the message object by key
+     * @param key The key to search for
+     * @return JsonDocument& The message object
+     * @note This function will not remove the message from the buffer
+     * @note If the key is not found, the first message in the buffer will be
+     * returned
+     */
+    JsonDocument& getMessageByKey(const std::string& key) {
+        if (buffer.empty())
+            // return an empty JsonDocument
+            return buffer.front();
+
+        for (auto& message : buffer) {
+            if (!message.containsKey(key)) {
+                this->log(LogLevel_t::ERROR,
+                          "Document with Key not found: ", key);
+                return message;
+            }
+            return message;
+        }
+    }
+
+    JsonDocument& operator[](size_t index) {
+        return buffer[index];
+    }
+
+    JsonDocument& at(size_t index) {
+        return buffer.at(index);
+    }
+
     MessageBuffer& getInstance() {
         return *this;
+    }
+
+    void pop() {
+        buffer.pop();
     }
 
     bool isEmpty() const {
