@@ -12,9 +12,10 @@ class CustomEventManager
     : public std::enable_shared_from_this<CustomEventManager<EnumT> >,
       public Logger,
       public IObserver<EnumT> {
-    std::string _id;
     using Strategy_t = iter_queue<std::shared_ptr<IEvent<EnumT> > >;
 
+   protected:
+    std::string _id;
     //* Queue for the strategies
     Strategy_t strategyQueue;
 
