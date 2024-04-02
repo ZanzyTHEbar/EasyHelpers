@@ -6,7 +6,10 @@
 
 This project supports the following boards:
 
-- ESP32
+- Xtensa
+- ARM
+
+Technically this library does not rely on any board API's and can even be compiled for ARM, RISCV, and AMD64. However, I built the library for work with ARM and Xtensa, and have not tested on other arches yet. 
 
 ## Installation
 
@@ -69,17 +72,13 @@ To see any of the `log` statements used in this library - you need to add this t
 
 ```ini
 build_flags = 
-  -DASYNCWEBSERVER_REGEX # add regex support to AsyncWebServer
-  -DUSE_WEBMANAGER # enable wifimanager
   -DCORE_DEBUG_LEVEL=4 # add debug logging in serial monitor
   -std=gnu++17
 build_unflags = -std=gnu++11
 
 ; other build parameters
-monitor_filters = 
- esp32_exception_decoder
 build_type = debug
-lib_ldf_mode = deep+
+lib_ldf_mode = deep
 ```
 
 If you want to build in debug mode add this (it's not a build flag):
