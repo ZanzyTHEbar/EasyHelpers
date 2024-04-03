@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.5.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.5.0...v1.5.1) (2024-04-03)
+
+
+### 🐛 Bug Fixes
+
+* change IId to atomic int instead of std::string ([965d6bd](https://github.com/ZanzyTHEbar/EasyHelpers/commit/965d6bd3a73463021a3439d010960d76eac13bf1))
+
 ## [1.5.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.4.3...v1.5.0) (2024-04-02)
 
 
