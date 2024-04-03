@@ -15,12 +15,11 @@ class CustomEventManager
     using Strategy_t = iter_queue<std::shared_ptr<IEvent<EnumT> > >;
 
    protected:
-    std::string _id;
     //* Queue for the strategies
     Strategy_t strategyQueue;
 
    public:
-    CustomEventManager(const std::string& id) : _id(id) {}
+    CustomEventManager() {}
     virtual ~CustomEventManager() {
         this->stop();
         while (!strategyQueue.empty()) {
@@ -61,7 +60,8 @@ class CustomEventManager
         const std::shared_ptr<IEvent<EnumT> >&& strategy) {
         Strategy_t tempQueue;
         while (!strategyQueue.empty()) {
-            if (strategyQueue.front().get()->id != strategy.get()->id) {
+            if (strategyQueue.front().get()->getID() !=
+                strategy.get()->getID()) {
                 tempQueue.emplace(std::move(strategyQueue.front()));
             }
             strategyQueue.pop();
@@ -84,9 +84,5 @@ class CustomEventManager
     //* Overrides
 
     virtual void update(const EnumT& event) override = 0;
-
-    std::string getID() const override {
-        return this->_id;
-    }
 };
 }  // namespace Helpers
