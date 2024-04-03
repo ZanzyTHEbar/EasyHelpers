@@ -13,14 +13,12 @@ class IElement : public IId {
    public:
     virtual ~IElement() = default;
     virtual void accept(VisitorRoot* visitor) = 0;
-    virtual std::string getID() const override = 0;
 };
 
 class VisitorBase : public VisitorRoot, public IId {
    public:
     virtual ~VisitorBase() = default;
     virtual void visit(IElement* element) = 0;
-    virtual std::string getID() const override = 0;
 };
 
 }  // namespace Helpers

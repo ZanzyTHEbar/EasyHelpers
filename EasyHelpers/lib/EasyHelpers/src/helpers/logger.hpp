@@ -43,27 +43,21 @@ class Logger : public IId {
     Logger() = default;
     virtual ~Logger() = default;
 
-    virtual std::string getID() const override {
-        return "Logger";
-    }
-
     // Templated log function to handle various data types and arguments
     template <typename... Args>
     void log(LogLevel_e log_level, Args... args) {
         std::string message = handleInput(args...);
         std::string logLevel = checkLogLevel(log_level);
-        std::string logMessage =
-            Helpers::format_string("[%s - %s]: %s", logLevel.c_str(),
-                                   this->getID().c_str(), message.c_str());
+        std::string logMessage = Helpers::format_string(
+            "[%s - %d]: %s", logLevel.c_str(), this->getID(), message.c_str());
         std::cout << logMessage << '\n';
     }
     template <typename... Args>
     void log(Args... args) {
         std::string message = handleInput(args...);
         std::string logLevel = checkLogLevel(LogLevel_e::INFO);
-        std::string logMessage =
-            Helpers::format_string("[%s - %s]: %s", logLevel.c_str(),
-                                   this->getID().c_str(), message.c_str());
+        std::string logMessage = Helpers::format_string(
+            "[%s - %d]: %s", logLevel.c_str(), this->getID(), message.c_str());
         std::cout << logMessage << '\n';
     }
 };

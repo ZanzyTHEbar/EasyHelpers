@@ -139,9 +139,5 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
         buffer.push(doc);
         return true;
     }
-
-    virtual std::string getID() const override {
-        return "MessageBuffer";
-    }
 };
 }  // namespace Helpers
