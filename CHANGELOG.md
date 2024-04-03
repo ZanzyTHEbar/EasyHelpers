@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.5.2](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.5.1...v1.5.2) (2024-04-03)
+
+
+### 🐛 Bug Fixes
+
+* update CustomEventManager to new IId interface ([52576da](https://github.com/ZanzyTHEbar/EasyHelpers/commit/52576dae2807747dbe28a42a4e93eec03acea9f7))
+
 ## [1.5.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.5.0...v1.5.1) (2024-04-03)
 
 
