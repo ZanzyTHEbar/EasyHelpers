@@ -34,20 +34,20 @@ class ISubject {
         detachAll();
     }
 
-    void attach(const uint64_t key, ObserverPtr_t observer) {
+    void attach(uint64_t key, ObserverPtr_t observer) {
         observers.emplace(observer->getID(), observer);
         observerKeys[observer->getID()].push_back(key);
     }
 
     void detach(const ObserverPtr_t& observer) {
-        const uint64_t name = observer.getID();
-        observerKeys.erase(name);
-        observers.erase(name);
+        uint64_t key = observer->getID();
+        observerKeys.erase(key);
+        observers.erase(key);
     }
 
-    void detach(const uint64_t observerName) {
-        observerKeys.erase(observerName);
-        observers.erase(observerName);
+    void detach(uint64_t observerKey) {
+        observerKeys.erase(observerKey);
+        observers.erase(observerKey);
     }
 
     void detachAll() {
@@ -55,23 +55,23 @@ class ISubject {
         observers.clear();
     }
 
-    void notify(const uint64_t key, EnumT event) {
-        for (const auto& [observerName, keys] : observerKeys) {
+    void notify(uint64_t key, EnumT event) {
+        for (const auto& [observerKey, keys] : observerKeys) {
             if (std::find(keys.begin(), keys.end(), key) != keys.end()) {
                 // access the observer from the map of vectors and notify it
-                observers[observerName]->update(event);
+                observers[observerKey]->update(event);
             }
         }
     }
 
     void notifyAll(EnumT event) {
-        for (const auto& [observerName, keys] : observerKeys) {
+        for (const auto& [observerKey, keys] : observerKeys) {
             //* Notify the observer if it's subscribed to the key
-            observers[observerName]->update(event);
+            observers[observerKey]->update(event);
         }
     }
 
-    std::vector<uint64_t> getObserverKeys(const uint64_t observerID) const {
+    std::vector<uint64_t> getObserverKeys(uint64_t observerID) const {
         if (auto it = observerKeys.find(observerID); it != observerKeys.end()) {
             return it->second;
         }

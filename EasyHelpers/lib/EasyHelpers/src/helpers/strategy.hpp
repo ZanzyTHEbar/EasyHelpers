@@ -3,13 +3,12 @@
 #include <optional>
 #include <string>
 #include "iter_queue.hpp"
-#include "logger.hpp"
 #include "observer.hpp"
 
 namespace Helpers {
 
 template <typename EnumT>
-class MessageBuffer : public ISubject<EnumT>, public Logger {
+class MessageBuffer : public ISubject<EnumT> {
     iter_queue<JsonDocument> buffer;
 
    public:
@@ -81,8 +80,6 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
                                  // to the document
             }
         }
-
-        this->log(LogLevel_t::ERROR, "Document with Key not found: ", key);
         return std::nullopt;  // Key not found in any document
     }
 
@@ -109,12 +106,11 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
     }
 
     template <typename T>
-    T serialize(bool iterate = false, bool clearBuffer = false) {
+    std::optional<T> serialize(bool iterate = false, bool clearBuffer = false) {
         T result;
 
         if (buffer.empty()) {
-            this->log(LogLevel_t::ERROR, "Buffer is empty");
-            return result;
+            return std::nullopt;
         }
 
         if (iterate) {
@@ -124,6 +120,11 @@ class MessageBuffer : public ISubject<EnumT>, public Logger {
         } else {
             serializeJson(result, buffer.front());
         }
+
+        if (clearBuffer) {
+            clear();
+        }
+
         return result;
     }
 

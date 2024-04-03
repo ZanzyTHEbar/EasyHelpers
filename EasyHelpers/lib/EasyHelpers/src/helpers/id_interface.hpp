@@ -7,7 +7,12 @@ class IId {
     inline static std::atomic<uint64_t> idCounter{0};
     uint64_t mID;
 
-   protected:
+   public:
+    IId() {
+        mID = idCounter++;
+    }
+    virtual ~IId() = default;
+
     void setID(uint64_t id) {
         mID = id;
     }
@@ -15,10 +20,4 @@ class IId {
     uint64_t getID() const {
         return mID;
     }
-
-   public:
-    IId() {
-        mID = idCounter++;
-    }
-    virtual ~IId() = default;
 };

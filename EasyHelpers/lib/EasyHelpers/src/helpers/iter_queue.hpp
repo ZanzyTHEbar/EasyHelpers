@@ -29,6 +29,10 @@ class iter_queue : public std::queue<T, Container> {
         return this->c.cend();
     }
 
+    const_iterator find(const T& value) const {
+        return std::find(this->cbegin(), this->cend(), value);
+    }
+
     iter_queue() {
         this->c = std::deque<T>();
     }

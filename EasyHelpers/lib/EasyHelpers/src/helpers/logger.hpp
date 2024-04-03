@@ -8,7 +8,24 @@
 #include "id_interface.hpp"
 
 namespace Helpers {
-class Logger : public IId {
+
+class LoggerID {
+   protected:
+    std::string label;
+
+   public:
+    LoggerID() = default;
+    virtual ~LoggerID() = default;
+
+    void setLabel(const std::string& label) {
+        this->label = label;
+    }
+    std::string getLabel() const {
+        return this->label;
+    }
+};
+
+class Logger : public LoggerID {
    public:
     enum LogLevel_e : uint8_t {
         DEBUG,
@@ -48,16 +65,18 @@ class Logger : public IId {
     void log(LogLevel_e log_level, Args... args) {
         std::string message = handleInput(args...);
         std::string logLevel = checkLogLevel(log_level);
-        std::string logMessage = Helpers::format_string(
-            "[%s - %d]: %s", logLevel.c_str(), this->getID(), message.c_str());
+        std::string logMessage =
+            Helpers::format_string("[%s - %s]: %s", logLevel.c_str(),
+                                   this->getLabel().c_str(), message.c_str());
         std::cout << logMessage << '\n';
     }
     template <typename... Args>
     void log(Args... args) {
         std::string message = handleInput(args...);
         std::string logLevel = checkLogLevel(LogLevel_e::INFO);
-        std::string logMessage = Helpers::format_string(
-            "[%s - %d]: %s", logLevel.c_str(), this->getID(), message.c_str());
+        std::string logMessage =
+            Helpers::format_string("[%s - %s]: %s", logLevel.c_str(),
+                                   this->getLabel().c_str(), message.c_str());
         std::cout << logMessage << '\n';
     }
 };
