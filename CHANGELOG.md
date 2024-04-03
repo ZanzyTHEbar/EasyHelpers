@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.6.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.0...v1.6.1) (2024-04-03)
+
+
+### 🐛 Bug Fixes
+
+* CustomEventManager class crashing and sing std::strings for ids ([754039b](https://github.com/ZanzyTHEbar/EasyHelpers/commit/754039bc273d5069635ef9785eaa8e5a583fe361))
+
 ## [1.6.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.5.2...v1.6.0) (2024-04-03)
 
 
