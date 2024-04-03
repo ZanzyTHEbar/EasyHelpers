@@ -16,10 +16,6 @@ class ConcreteVisitor : public Helpers::VisitorBase {
             // Now you can work with the specific type
         }
     }
-
-    std::string getID() const override {
-        return "ConcreteVisitor";
-    }
 };
 
 // Example concrete Element class
@@ -33,10 +29,6 @@ class ConcreteElement : public Helpers::IElement {
         }
         // Alternatively, use a static_cast if you're sure about the types
         // involved, but dynamic_cast provides type safety at runtime.
-    }
-
-    std::string getID() const override {
-        return "ConcreteElement";
     }
 };
 
