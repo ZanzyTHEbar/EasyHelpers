@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.6.2](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.1...v1.6.2) (2024-04-06)
+
+
+### 🐛 Bug Fixes
+
+* Fix deserialization error handling in MessageBuffer class ([8665e7a](https://github.com/ZanzyTHEbar/EasyHelpers/commit/8665e7a499840308cc33b3ecde22115a769de17f))
+
 ## [1.6.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.0...v1.6.1) (2024-04-03)
 
 
