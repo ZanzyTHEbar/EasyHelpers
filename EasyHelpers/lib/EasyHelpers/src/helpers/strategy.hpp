@@ -129,16 +129,18 @@ class MessageBuffer : public ISubject<EnumT> {
     }
 
     template <typename T>
-    bool deserialize(const T& data) {
+    std::optional<DeserializationError> deserialize(const T& data) {
         JsonDocument doc;
         DeserializationError err = deserializeJson(doc, data);
         if (err) {
-            this->log(LogLevel_t::ERROR, "deserializeJson() failed: ", err);
-            return false;
+            // return the error object if deserialization fails
+            return err;
         }
 
         buffer.push(doc);
-        return true;
+
+        // return an empty optional if deserialization is successful
+        return std::nullopt;
     }
 };
 }  // namespace Helpers

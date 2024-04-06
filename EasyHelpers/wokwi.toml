@@ -1,7 +1,7 @@
 [wokwi]
 version = 1
-elf = ".pio/build/esp32s3_debug/EasyHelpers-v1.6.0-esp32s3_debug-b2b858c-main.elf"
-firmware = ".pio/build/esp32s3_debug/EasyHelpers-v1.6.0-esp32s3_debug-b2b858c-main.bin"
+elf = ".pio/build/esp32s3_debug/EasyHelpers-v1.6.0-esp32s3_debug-754039b-main.elf"
+firmware = ".pio/build/esp32s3_debug/EasyHelpers-v1.6.0-esp32s3_debug-754039b-main.bin"
 [[net.forward]]
 from = "localhost:8180"
 to = "target:80"
