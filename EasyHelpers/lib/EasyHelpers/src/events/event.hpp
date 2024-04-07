@@ -42,7 +42,6 @@ class CustomEventManager
         }
 
         for (auto& strategy : strategyQueue) {
-            //* Call the begin method for each strategy
             this->log(LogLevel_t::DEBUG, "Strategy ID: ", strategy->getID());
             strategy->begin();
         }
@@ -66,12 +65,21 @@ class CustomEventManager
      * @param strategy The strategy to add
      * @note This will add the strategy to the queue
      */
-    virtual void addSubscriber(const Strategy_t&& strategy) {
-        this->log(LogLevel_t::DEBUG, "Adding Strategy: ", strategy->getID());
-        strategy->attach(this->getID(), this->shared_from_this());
-        this->log(LogLevel_t::DEBUG, "Strategy Attached: ", strategy->getID());
-        strategyQueue.emplace(std::move(strategy));
-        this->log(LogLevel_t::DEBUG, "Strategy Added: ", strategy->getID());
+    virtual void addSubscriber(Strategy_t strategy) {  // Use const reference
+        if (!strategy)
+            return;  // Safety check
+
+        // Convert this instance into a shared_ptr before converting to weak_ptr
+        auto selfSharedPtr = this->shared_from_this();
+        auto selfWeakPtr =
+            std::weak_ptr<CustomEventManager<EnumT> >(selfSharedPtr);
+
+        // Use the revised attach method
+        strategy->attach(selfWeakPtr);
+
+        // Optionally, you can store the strategy's weak_ptr if you need to
+        // manage strategies from CustomEventManager
+        this->strategyQueue.emplace(strategy);
     }
 
     /**
@@ -79,15 +87,17 @@ class CustomEventManager
      * @param strategy The strategy to remove
      * @note This will remove the strategy from the queue
      */
-    virtual void removeSubscriber(const Strategy_t&& strategy) {
+    virtual void removeSubscriber(Strategy_t strategy) {
         StrategyQueue_t tempQueue;
         while (!strategyQueue.empty()) {
-            if (strategyQueue.front().get()->getID() !=
-                strategy.get()->getID()) {
-                tempQueue.emplace(std::move(strategyQueue.front()));
+            auto strategyFront = strategyQueue.front();
+
+            if (strategyFront.get()->getID() != strategy->getID()) {
+                tempQueue.emplace(std::move(strategyFront));
             }
+
             // detach the strategy
-            strategyQueue.front().get()->detach(this->shared_from_this());
+            strategyFront.get()->detach(this->getID());
             strategyQueue.pop();
         }
         strategyQueue = std::move(tempQueue);
@@ -113,7 +123,7 @@ class CustomEventManager
      * @param strategy The strategy to handle
      * @note This will call the receiveMessage method for the strategy
      */
-    virtual void handleStrategy(const Strategy_t&& strategy) {
+    virtual void handleStrategy(Strategy_t strategy) {
         if (strategyQueue.empty()) {
             this->log(LogLevel_t::ERROR, "No strategies found");
             return;
@@ -121,7 +131,7 @@ class CustomEventManager
 
         auto _strategy = strategyQueue.find(strategy);
         if (_strategy != strategyQueue.cend()) {
-            _strategy->get()->receiveMessage();
+            strategy->receiveMessage();
             return;
         }
 

@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include "freertos/semphr.h"
 #include "id_interface.hpp"
 
 namespace Helpers {
@@ -21,61 +22,74 @@ class IObserver : public IId {
 template <typename EnumT>
 class ISubject {
    private:
-    using ObserverPtr_t = std::shared_ptr<IObserver<EnumT> >;
+    SemaphoreHandle_t mutex;
+    using ObserverPtr_t = std::weak_ptr<IObserver<EnumT> >;
     using ObserversByNameMap_t = std::unordered_map<uint64_t, ObserverPtr_t>;
-    using ObserverKeysMap_t =
-        std::unordered_map<uint64_t, std::vector<uint64_t> >;
 
-    ObserverKeysMap_t observerKeys;
     ObserversByNameMap_t observers;
 
    public:
+    ISubject() {
+        mutex = xSemaphoreCreateMutex();
+    }
+
     virtual ~ISubject() {
         detachAll();
+        vSemaphoreDelete(mutex);
     }
 
-    void attach(uint64_t key, ObserverPtr_t observer) {
-        observers.emplace(observer->getID(), observer);
-        observerKeys[observer->getID()].push_back(key);
+    void attach(ObserverPtr_t observerWeak) {
+        xSemaphoreTake(mutex, portMAX_DELAY);
+        if (auto observer = observerWeak.lock()) {
+            observers[observer->getID()] = observerWeak;
+        }
+        xSemaphoreGive(mutex);
     }
 
-    void detach(const ObserverPtr_t& observer) {
-        uint64_t key = observer->getID();
-        observerKeys.erase(key);
-        observers.erase(key);
+    void detach(const ObserverPtr_t& observerWeak) {
+        xSemaphoreTake(mutex, portMAX_DELAY);
+        observers.erase(
+            std::remove_if(
+                observers.begin(), observers.end(),
+                [&observerWeak](const std::weak_ptr<IObserver<EnumT> >& o) {
+                    return o.lock() == observerWeak.lock();
+                }),
+            observers.end());
+        xSemaphoreGive(mutex);
     }
 
     void detach(uint64_t observerKey) {
-        observerKeys.erase(observerKey);
+        xSemaphoreTake(mutex, portMAX_DELAY);
         observers.erase(observerKey);
+        xSemaphoreGive(mutex);
     }
 
     void detachAll() {
-        observerKeys.clear();
+        xSemaphoreTake(mutex, portMAX_DELAY);
         observers.clear();
+        xSemaphoreGive(mutex);
     }
 
     void notify(uint64_t key, EnumT event) {
-        for (const auto& [observerKey, keys] : observerKeys) {
-            if (std::find(keys.begin(), keys.end(), key) != keys.end()) {
-                // access the observer from the map of vectors and notify it
-                observers[observerKey]->update(event);
+        xSemaphoreTake(mutex, portMAX_DELAY);
+        for (const auto& [observerKey, observerWeak] : observers) {
+            if (observerKey == key) {
+                if (auto observer = observerWeak.lock()) {
+                    observer->update(event);
+                }
             }
         }
+        xSemaphoreGive(mutex);
     }
 
     void notifyAll(EnumT event) {
-        for (const auto& [observerKey, keys] : observerKeys) {
-            //* Notify the observer if it's subscribed to the key
-            observers[observerKey]->update(event);
+        xSemaphoreTake(mutex, portMAX_DELAY);
+        for (const auto& [observerKey, observerWeak] : observers) {
+            if (auto observer = observerWeak.lock()) {
+                observer->update(event);
+            }
         }
-    }
-
-    std::vector<uint64_t> getObserverKeys(uint64_t observerID) const {
-        if (auto it = observerKeys.find(observerID); it != observerKeys.end()) {
-            return it->second;
-        }
-        return {};
+        xSemaphoreGive(mutex);
     }
 };
 }  // namespace Helpers
