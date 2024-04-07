@@ -23,6 +23,7 @@ class CustomEventManager
     CustomEventManager(const std::string& label) {
         this->setLabel(label);
     }
+    
     virtual ~CustomEventManager() {
         this->stop();
     }
@@ -97,10 +98,13 @@ class CustomEventManager
      * @note Here we call all Strategies for the API
      */
     virtual void handleStrtegies() {
-        while (!strategyQueue.empty()) {
-            for (auto& event : strategyQueue) {
-                event->receiveMessage();
-            }
+        if (strategyQueue.empty()) {
+            this->log(LogLevel_t::ERROR, "No strategies found");
+            return;
+        }
+
+        for (auto& event : strategyQueue) {
+            event->receiveMessage();
         }
     }
 
