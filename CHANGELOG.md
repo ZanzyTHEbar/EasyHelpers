@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.6.4](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.3...v1.6.4) (2024-04-07)
+
+
+### 🐛 Bug Fixes
+
+* bug where handle strategies is an infinite loop ([d3c9bcc](https://github.com/ZanzyTHEbar/EasyHelpers/commit/d3c9bcc30adac2d14e2cf9d93ea8c5052e7e8511))
+
 ## [1.6.3](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.2...v1.6.3) (2024-04-06)
 
 
