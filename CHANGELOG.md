@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.7.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.6...v1.7.0) (2024-04-07)
+
+
+### 🍕 Features
+
+* make the eventmanager thread safe with mutexes. ([913519e](https://github.com/ZanzyTHEbar/EasyHelpers/commit/913519e39d9c09e44f2a9f875ef204fd596072de))
+
 ## [1.6.6](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.5...v1.6.6) (2024-04-07)
 
 
