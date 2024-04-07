@@ -23,7 +23,7 @@ class CustomEventManager
     CustomEventManager(const std::string& label) {
         this->setLabel(label);
     }
-    
+
     virtual ~CustomEventManager() {
         this->stop();
     }
@@ -84,10 +84,10 @@ class CustomEventManager
         while (!strategyQueue.empty()) {
             if (strategyQueue.front().get()->getID() !=
                 strategy.get()->getID()) {
-                // detach the strategy
-                strategyQueue.front().get()->detach(this->shared_from_this());
                 tempQueue.emplace(std::move(strategyQueue.front()));
             }
+            // detach the strategy
+            strategyQueue.front().get()->detach(this->shared_from_this());
             strategyQueue.pop();
         }
         strategyQueue = std::move(tempQueue);
