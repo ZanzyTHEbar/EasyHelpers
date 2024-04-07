@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.6.6](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.5...v1.6.6) (2024-04-07)
+
+
+### 🐛 Bug Fixes
+
+* update observer to be multicore safe ([4cb0c40](https://github.com/ZanzyTHEbar/EasyHelpers/commit/4cb0c4057a1e8941e06df6c49b962974ca35789d))
+
 ## [1.6.5](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.4...v1.6.5) (2024-04-07)
 
 
