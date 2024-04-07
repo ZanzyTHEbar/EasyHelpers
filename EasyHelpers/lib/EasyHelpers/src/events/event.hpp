@@ -7,6 +7,13 @@
 #include "event_interface.hpp"
 
 namespace Helpers {
+/**
+ * @brief Custom Event Manager
+ * @tparam EnumT The Enum Type for the Event
+ * @note This class is a custom event manager that can be used to manage
+ * multiple strategies, this class implementes mutex for thread safety, ensure
+ * to properly handle the mutex in the derived class with the overriden method.
+ */
 template <typename EnumT>
 class CustomEventManager
     : public std::enable_shared_from_this<CustomEventManager<EnumT> >,
@@ -17,15 +24,18 @@ class CustomEventManager
 
    protected:
     //* Queue for the strategies
+    SemaphoreHandle_t mutex;
     StrategyQueue_t strategyQueue;
 
    public:
     CustomEventManager(const std::string& label) {
+        mutex = xSemaphoreCreateMutex();
         this->setLabel(label);
     }
 
     virtual ~CustomEventManager() {
         this->stop();
+        vSemaphoreDelete(mutex);
     }
 
     /**
@@ -33,6 +43,7 @@ class CustomEventManager
      * @note This will call the begin method for all strategies
      */
     virtual void begin() {
+        xSemaphoreTake(mutex, portMAX_DELAY);
         this->log("Initializing Strategies");
 
         // check if the queue is empty
@@ -45,6 +56,7 @@ class CustomEventManager
             this->log(LogLevel_t::DEBUG, "Strategy ID: ", strategy->getID());
             strategy->begin();
         }
+        xSemaphoreGive(mutex);
     }
 
     /**
@@ -53,11 +65,13 @@ class CustomEventManager
      * an empty instance
      */
     virtual void stop() {
+        xSemaphoreTake(mutex, portMAX_DELAY);
         while (!strategyQueue.empty()) {
             strategyQueue.pop();
         }
         strategyQueue = StrategyQueue_t();
         this->log("Strategies Stopped");
+        xSemaphoreGive(mutex);
     }
 
     /**
@@ -65,7 +79,7 @@ class CustomEventManager
      * @param strategy The strategy to add
      * @note This will add the strategy to the queue
      */
-    virtual void addSubscriber(Strategy_t strategy) {  // Use const reference
+    virtual void addSubscriber(Strategy_t strategy) {
         if (!strategy)
             return;  // Safety check
 
@@ -77,9 +91,9 @@ class CustomEventManager
         // Use the revised attach method
         strategy->attach(selfWeakPtr);
 
-        // Optionally, you can store the strategy's weak_ptr if you need to
-        // manage strategies from CustomEventManager
+        xSemaphoreTake(mutex, portMAX_DELAY);
         this->strategyQueue.emplace(strategy);
+        xSemaphoreGive(mutex);
     }
 
     /**
@@ -88,6 +102,11 @@ class CustomEventManager
      * @note This will remove the strategy from the queue
      */
     virtual void removeSubscriber(Strategy_t strategy) {
+        xSemaphoreTake(mutex, portMAX_DELAY);
+
+        if (!strategy)
+            return;  // Safety check
+
         StrategyQueue_t tempQueue;
         while (!strategyQueue.empty()) {
             auto strategyFront = strategyQueue.front();
@@ -101,6 +120,8 @@ class CustomEventManager
             strategyQueue.pop();
         }
         strategyQueue = std::move(tempQueue);
+
+        xSemaphoreGive(mutex);
     }
 
     /**
@@ -108,6 +129,8 @@ class CustomEventManager
      * @note Here we call all Strategies for the API
      */
     virtual void handleStrtegies() {
+        xSemaphoreTake(mutex, portMAX_DELAY);
+
         if (strategyQueue.empty()) {
             this->log(LogLevel_t::ERROR, "No strategies found");
             return;
@@ -116,6 +139,8 @@ class CustomEventManager
         for (auto& event : strategyQueue) {
             event->receiveMessage();
         }
+
+        xSemaphoreGive(mutex);
     }
 
     /**
@@ -124,6 +149,8 @@ class CustomEventManager
      * @note This will call the receiveMessage method for the strategy
      */
     virtual void handleStrategy(Strategy_t strategy) {
+        xSemaphoreTake(mutex, portMAX_DELAY);
+
         if (strategyQueue.empty()) {
             this->log(LogLevel_t::ERROR, "No strategies found");
             return;
@@ -136,6 +163,8 @@ class CustomEventManager
         }
 
         this->log(LogLevel_t::ERROR, "Strategy not found");
+
+        xSemaphoreGive(mutex);
     }
 
     //* Overrides
