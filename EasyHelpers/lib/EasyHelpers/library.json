@@ -34,7 +34,7 @@
   "export": {
     "include": ["lib/*", "../../examples/*", "examples/*", "include/*"]
   },
-  "version": "1.6.4",
+  "version": "1.6.5",
   "frameworks": "arduino",
   "platforms": ["espressif32"]
 }

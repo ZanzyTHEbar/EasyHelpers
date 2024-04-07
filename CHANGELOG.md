@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.6.5](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.4...v1.6.5) (2024-04-07)
+
+
+### 🐛 Bug Fixes
+
+* bug where remove sub detached all strategies except the one being removed ([d1b25a2](https://github.com/ZanzyTHEbar/EasyHelpers/commit/d1b25a26cac3a683aab5d4d3bf89d854a88ced21))
+
 ## [1.6.4](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.3...v1.6.4) (2024-04-07)
 
 
