@@ -128,7 +128,7 @@ class CustomEventManager
      * @brief Call in a loop to handle all strategies sequentially
      * @note Here we call all Strategies for the API
      */
-    virtual void handleStrtegies() {
+    virtual void handleStrategies() {
         xSemaphoreTake(mutex, portMAX_DELAY);
 
         if (strategyQueue.empty()) {
