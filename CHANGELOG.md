@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.7.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.7.0...v1.7.1) (2024-04-20)
+
+
+### 🐛 Bug Fixes
+
+* bug in strategy.hpp ([e72dec0](https://github.com/ZanzyTHEbar/EasyHelpers/commit/e72dec0ea12ef34b5169325c2cb21efd026a69a9))
+
 ## [1.7.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.6.6...v1.7.0) (2024-04-07)
 
 
