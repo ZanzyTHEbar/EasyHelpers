@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.7.2](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.7.1...v1.7.2) (2024-04-20)
+
+
+### 🐛 Bug Fixes
+
+* spelling in event.hpp ([0a8ba09](https://github.com/ZanzyTHEbar/EasyHelpers/commit/0a8ba09ec8a4bcd762ad81a41747b567fcf1af3a))
+
 ## [1.7.1](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.7.0...v1.7.1) (2024-04-20)
 
 
