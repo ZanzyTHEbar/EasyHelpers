@@ -34,10 +34,10 @@ class MessageBuffer : public ISubject<EnumT> {
      * @brief Get the message object at the front of the queue
      * @note This function will remove the message from the bufferusing `pop()`
      */
-    JsonDocument getMessage() {
+    std::optional<JsonDocument> getMessage() {
         if (buffer.empty())
             // return an empty JsonDocument
-            return buffer.front();
+            return std::nullopt;
         auto message = buffer.front();
         buffer.pop();
         return message;
@@ -47,7 +47,11 @@ class MessageBuffer : public ISubject<EnumT> {
      * @brief Get the message object at the front of the queue
      * @note This function will not remove the message from the buffer
      */
-    JsonDocument peekMessage() {
+    std::optional<JsonDocument> peekMessage() {
+        if (buffer.empty())
+            // return an empty JsonDocument
+            return std::nullopt;
+
         return buffer.front();
     }
 
@@ -55,10 +59,10 @@ class MessageBuffer : public ISubject<EnumT> {
      * @brief Get the latest message object
      * @note This function will not remove the message from the buffer
      */
-    JsonDocument getLatestMessage() {
+    std::optional<JsonDocument> getLatestMessage() {
         if (buffer.empty())
             // return an empty JsonDocument
-            return buffer.front();
+            return std::nullopt;
         return buffer.back();
     }
 
