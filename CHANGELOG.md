@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.8.4](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.8.3...v1.8.4) (2024-04-29)
+
+
+### 🤖 Build System
+
+* update build script execution ([001b7d8](https://github.com/ZanzyTHEbar/EasyHelpers/commit/001b7d8108f29d966f8e23c6bd71a9af71227703))
+
 ## [1.8.3](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.8.2...v1.8.3) (2024-04-29)
 
 
