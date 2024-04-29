@@ -19,6 +19,15 @@
       "version": "*"
     }
   ],
+  "export": {
+    "include": [
+      "../README.md",
+      "../LICENSE",
+      "examples/*",
+      "src/*",
+      "include/*"
+    ]
+  },
   "headers": [
     "helpers/helpers.hpp",
     "helpers/iter_queue.hpp",

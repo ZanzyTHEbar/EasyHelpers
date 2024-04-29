@@ -31,17 +31,17 @@ lib_deps =
 
 ## Headers
 
-- [`EasyHelpers.h`](/EasyHelpers/lib/EasyHelpers/src/EasyHelpers.h) - Main header file for the library, includes the `EasyHelpers.hpp` file
-- [`EasyHelpers.hpp`](/EasyHelpers/lib/EasyHelpers/src/Easyhelpers.hpp) - A header file that includes all the headers above
-- [`helpers/helpers.hpp`](/EasyHelpers/lib/EasyHelpers/src/helpers/helpers.hpp) - Main helpers file, containing various string helpers
-- [`helpers/iter_queue.hpp`](/EasyHelpers/lib/EasyHelpers/src/helpers/iter_queue.hpp) - A queue that can be iterated over
-- [`helpers/logger.hpp`](/EasyHelpers/lib/EasyHelpers/src/helpers/logger.hpp) - A logger class that can be used to log messages
-- [`helpers/observer.hpp`](/EasyHelpers/lib/EasyHelpers/src/helpers/observer.hpp) - A class for the observer pattern
-- [`helpers/strategy.hpp`](/EasyHelpers/lib/EasyHelpers/src/helpers/strategy.hpp) - A class for the strategy pattern
-- [`helpers/visitor.hpp`](/EasyHelpers/lib/EasyHelpers/src/helpers/visitor.hpp) - A class for the visitor pattern
-- [`helpers/make_unique.hpp`](/EasyHelpers/lib/EasyHelpers/src/helpers/make_unique.hpp) - A helper function to create unique pointers (not really needed in c++17 - it's legacy)
-- [`events/event.hpp`](/EasyHelpers/lib/EasyHelpers/src/events/event.hpp) - A class for event managment using the `iter_queue`
-- [`events/event_interface.hpp`](/EasyHelpers/lib/EasyHelpers/src/events/event_interface.hpp) - An interface for the `event` class
+- [`EasyHelpers.h`](/EasyHelpers/include/EasyHelpers.h) - Main header file for the library, includes the `EasyHelpers.hpp` file
+- [`EasyHelpers.hpp`](/EasyHelpers/include/Easyhelpers.hpp) - A header file that includes all the headers above
+- [`helpers/helpers.hpp`](/EasyHelpers/include/helpers/helpers.hpp) - Main helpers file, containing various string helpers
+- [`helpers/iter_queue.hpp`](/EasyHelpers/include/helpers/iter_queue.hpp) - A queue that can be iterated over
+- [`helpers/logger.hpp`](/EasyHelpers/include/helpers/logger.hpp) - A logger class that can be used to log messages
+- [`helpers/observer.hpp`](/EasyHelpers/include/helpers/observer.hpp) - A class for the observer pattern
+- [`helpers/strategy.hpp`](/EasyHelpers/include/helpers/strategy.hpp) - A class for the strategy pattern
+- [`helpers/visitor.hpp`](/EasyHelpers/include/helpers/visitor.hpp) - A class for the visitor pattern
+- [`helpers/make_unique.hpp`](/EasyHelpers/include/helpers/make_unique.hpp) - A helper function to create unique pointers (not really needed in c++17 - it's legacy)
+- [`events/event.hpp`](/EasyHelpers/include/events/event.hpp) - A class for event managment using the `iter_queue`
+- [`events/event_interface.hpp`](/EasyHelpers/include/events/event_interface.hpp) - An interface for the `event` class
 
 ## Usage
 
