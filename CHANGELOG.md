@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.8.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.7.2...v1.8.0) (2024-04-29)
+
+
+### 📝 Documentation
+
+* add contributions ([855829c](https://github.com/ZanzyTHEbar/EasyHelpers/commit/855829cf22d918750a2057e75d765169ae91609a))
+
 ## [1.7.2](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.7.1...v1.7.2) (2024-04-20)
 
 
