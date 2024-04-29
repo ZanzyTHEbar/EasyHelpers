@@ -3,6 +3,18 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.8.6](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.8.5...v1.8.6) (2024-04-29)
+
+
+### 🧑‍💻 Code Refactoring
+
+* total project refactor ([fd67871](https://github.com/ZanzyTHEbar/EasyHelpers/commit/fd67871d368959e2c0be6d6cd13a75b2da1a98c5))
+
+
+### 🤖 Build System
+
+* Add *.tar.gz to .gitignore ([0640969](https://github.com/ZanzyTHEbar/EasyHelpers/commit/0640969bed34681b3de6fe38cc1b93f6354044b8))
+
 ## [1.8.5](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.8.4...v1.8.5) (2024-04-29)
 
 
