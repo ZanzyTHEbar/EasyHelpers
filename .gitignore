@@ -9,3 +9,4 @@ node_modules
 /tools/__pycache__
 /tools/firmware_name.txt
 /logs
+*tar.gz
