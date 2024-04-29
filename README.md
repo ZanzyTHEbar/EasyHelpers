@@ -9,7 +9,7 @@ This project supports the following boards:
 - Xtensa
 - ARM
 
-Technically this library does not rely on any board API's and can even be compiled for ARM, RISCV, and AMD64. However, I built the library for work with ARM and Xtensa, and have not tested on other arches yet. 
+Technically this library does not rely on any board API's and can even be compiled for ARM, RISCV, and AMD64. However, I built the library for work with ARM and Xtensa, and have not tested on other arches yet.
 
 ## Installation
 
@@ -90,3 +90,7 @@ build_type = debug
 ## License
 
 This library is licensed under the MIT License.
+
+## Contributions
+
+Contributions are welcome 🙂🎓
