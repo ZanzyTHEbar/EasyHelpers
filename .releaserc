@@ -148,7 +148,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "sed -i 's/\"version\": \"[0-9\\.]*\",/\"version\": \"${nextRelease.version}\",/g' ./EasyHelpers/library.json",
+        "prepareCmd": "sed -i 's/\"version\": \"[0-9\\.]*\",/\"version\": \"${nextRelease.version}\",/g' ./library.json",
         "publishCmd": "echo 'Publishing to PIO Registry'"
       }
     ],
@@ -162,7 +162,7 @@
       "@semantic-release/git",
       {
         "assets": [
-          "EasyHelpers/library.json",
+          "library.json",
           "LICENSE*",
           "CHANGELOG.md"
         ],

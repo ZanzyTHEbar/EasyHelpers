@@ -1,10 +1,6 @@
 {
   "folders": [
     {
-      "name": "Source",
-      "path": "./EasyHelpers"
-    },
-    {
       "name": "Root",
       "path": "."
     }
