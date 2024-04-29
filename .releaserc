@@ -148,7 +148,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "sed -i 's/\"version\": \"[0-9\\.]*\",/\"version\": \"${nextRelease.version}\",/g' ./EasyHelpers/lib/EasyHelpers/library.json",
+        "prepareCmd": "sed -i 's/\"version\": \"[0-9\\.]*\",/\"version\": \"${nextRelease.version}\",/g' ./EasyHelpers/library.json",
         "publishCmd": "pio pkg publish --no-interactive"
       }
     ],
@@ -162,7 +162,7 @@
       "@semantic-release/git",
       {
         "assets": [
-          "EasyHelpers/lib/EasyHelpers/library.json",
+          "EasyHelpers/library.json",
           "LICENSE*",
           "CHANGELOG.md"
         ],
