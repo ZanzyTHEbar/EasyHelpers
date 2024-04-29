@@ -41,7 +41,7 @@
     "EasyHelpers.hpp",
     "EasyHelpers.h"
   ],
-  "version": "1.8.3",
+  "version": "1.8.4",
   "frameworks": ["arduino", "espidf"],
   "platforms": ["espressif32"]
 }
