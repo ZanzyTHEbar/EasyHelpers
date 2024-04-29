@@ -149,7 +149,7 @@
       "@semantic-release/exec",
       {
         "prepareCmd": "sed -i 's/\"version\": \"[0-9\\.]*\",/\"version\": \"${nextRelease.version}\",/g' ./EasyHelpers/library.json",
-        "publishCmd": "pio pkg publish --no-interactive"
+        "publishCmd": "echo 'Publishing to PIO Registry"
       }
     ],
     [
