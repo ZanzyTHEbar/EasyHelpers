@@ -117,6 +117,6 @@ void setup() {
 
 void loop() {
     //* Loop through the strategies
-    eventManager->handleStrtegies();
+    eventManager->handleStrategies();
     delay(1000);
 }

@@ -14,8 +14,9 @@
   },
   "dependencies": [
     {
+      "owner": "bblanchon",
       "name": "ArduinoJson",
-      "version": "https://github.com/bblanchon/ArduinoJson.git"
+      "version": "*"
     }
   ],
   "headers": [
@@ -31,10 +32,7 @@
     "EasyHelpers.hpp",
     "EasyHelpers.h"
   ],
-  "export": {
-    "include": ["lib/*", "../../examples/*", "examples/*", "include/*"]
-  },
   "version": "1.8.1",
-  "frameworks": "arduino",
+  "frameworks": ["arduino", "espidf"],
   "platforms": ["espressif32"]
 }
