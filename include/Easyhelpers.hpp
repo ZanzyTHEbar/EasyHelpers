@@ -6,7 +6,7 @@
 #include <helpers/logger.hpp>
 #include <helpers/make_unique.hpp>
 #include <helpers/observer.hpp>
-#include <helpers/strategy.hpp>
+#include <helpers/message_buffer.hpp>
 #include <helpers/visitor.hpp>
 
 #include <events/event.hpp>

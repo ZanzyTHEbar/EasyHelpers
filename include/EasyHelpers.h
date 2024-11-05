@@ -1,2 +1,2 @@
 #pragma once
-#include "EasyHelpers.hpp"
+#include "Easyhelpers.hpp"

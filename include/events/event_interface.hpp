@@ -1,7 +1,7 @@
 #pragma once
 #include <ArduinoJson.h>
 #include <helpers/id_interface.hpp>
-#include <helpers/strategy.hpp>
+#include <helpers/message_buffer.hpp>
 
 namespace Helpers {
 template <typename EnumT>
