@@ -3,6 +3,18 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.8.7](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.8.6...v1.8.7) (2024-11-05)
+
+
+### 🎨 Styles
+
+* format code and improve consistency across files ([42dbb22](https://github.com/ZanzyTHEbar/EasyHelpers/commit/42dbb22124961fd4c3bc27888e6dd0d759e7017b))
+
+# 📦 Changelog 
+[![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
+> All notable changes to this project will be documented in this file
+
 ## [1.8.6](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.8.5...v1.8.6) (2024-04-29)
 
 
