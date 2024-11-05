@@ -3,6 +3,13 @@
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 > All notable changes to this project will be documented in this file
 
+## [1.9.0](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.8.7...v1.9.0) (2024-11-05)
+
+
+### 🍕 Features
+
+* **observer:** add payload support to observer pattern ([5c12ea7](https://github.com/ZanzyTHEbar/EasyHelpers/commit/5c12ea74b204f1ea118bc30a49fb1e9d79d6482a))
+
 ## [1.8.7](https://github.com/ZanzyTHEbar/EasyHelpers/compare/v1.8.6...v1.8.7) (2024-11-05)
 
 
